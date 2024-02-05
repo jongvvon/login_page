@@ -39,13 +39,16 @@ class _SignInScreenState extends State<SignInScreen> {
       },
     );
 
-    if (response.statusCode == 200) {
-      // If the server returns a 200 OK response, parse the JSON.
-      return jsonDecode(response.body);
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to login.');
+    switch (response.statusCode) {
+      case 200:
+        // If the server returns a 200 OK response, parse the JSON.
+        return jsonDecode(response.body);
+      case 401:
+        throw Exception("이메일 인증에 실패하였습니다.");
+      case 402:
+        throw Exception("이메일 또는 비밀번호가 잘못되었습니다.");
+      default:
+        throw Exception("이메일 또는 비밀번호가 잘못되었습니다.");
     }
   }
 
@@ -68,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: const Text("로그인 실패"),
-              content: const Text("이메일 또는 비밀번호가 잘못되었습니다."),
+              content: Text(e.toString()),
               actions: <Widget>[
                 TextButton(
                     onPressed: () {

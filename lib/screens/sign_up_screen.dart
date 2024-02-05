@@ -57,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       case 402:
         throw Exception("이메일 혹은 비밀번호 오류입니다.");
       default:
-        throw Exception("정보를 다시 확인해주세요.");
+        throw Exception("입력하신 정보를 다시 확인해주세요.");
     }
   }
 
@@ -70,8 +70,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
     try {
       var result = await register(email, password, nickname, qcode);
       // 회원가입 성공. 플로팅 메시지를 표시합니다.
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('회원가입에 성공하였습니다. 이메일 인증을 해주세요.')),
+      Fluttertoast.showToast(
+        msg: '회원가입에 성공하였습니다. 이메일 인증을 해주세요.',
+        toastLength: Toast.LENGTH_SHORT,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.black,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: ((context) => const SignInScreen()),
+        ),
       );
       // `result`를 사용하여 추가 작업을 수행합니다.
     } catch (e) {
