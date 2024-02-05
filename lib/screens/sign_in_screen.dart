@@ -62,7 +62,7 @@ class _SignInScreenState extends State<SignInScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: ((context) => const HomeScreen()),
+            builder: ((context) => const homeScreen()),
           ));
     } catch (e) {
       // 로그인 실패. 에러 메시지를 표시합니다.
