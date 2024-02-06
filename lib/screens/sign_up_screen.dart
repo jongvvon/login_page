@@ -21,7 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nicknameController = TextEditingController();
-  final TextEditingController _qcodeController = TextEditingController();
+  final TextEditingController _fcodeController = TextEditingController();
 
   @override
   void initState() {
@@ -29,7 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Future<void> register(
-      String email, String password, String nickname, String qcode) async {
+      String email, String password, String nickname, String fcode) async {
     final response = await http.post(
       Uri.parse(
           'http://ec2-35-172-247-23.compute-1.amazonaws.com:4000/register'),
@@ -40,7 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         'email': email,
         'password': password,
         'nickname': nickname,
-        'qcode': qcode,
+        'f_code': fcode,
       },
     );
 
@@ -65,10 +65,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     String email = _emailController.text;
     String password = _passwordController.text;
     String nickname = _nicknameController.text;
-    String qcode = _qcodeController.text;
+    String fcode = _fcodeController.text;
 
     try {
-      var result = await register(email, password, nickname, qcode);
+      var result = await register(email, password, nickname, fcode);
       // 회원가입 성공. 플로팅 메시지를 표시합니다.
       Fluttertoast.showToast(
         msg: '회원가입에 성공하였습니다. 이메일 인증을 해주세요.',
@@ -226,11 +226,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 10,
                     ),
                     TextFormField(
-                      controller: _qcodeController,
+                      controller: _fcodeController,
                       decoration: const InputDecoration(
                         fillColor: Colors.transparent,
                         filled: true,
-                        labelText: 'Q-code',
+                        labelText: 'F-code',
                       ),
                     ),
                     const SizedBox(

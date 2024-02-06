@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:welcome/screens/onboding_screen.dart';
 import 'package:welcome/screens/sign_in_screen.dart';
 
 class homeScreen extends StatefulWidget {
