@@ -10,6 +10,8 @@ import 'package:welcome/screens/sign_up_screen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:welcome/widgets/navbar_roots.dart';
+
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -62,7 +64,7 @@ class _SignInScreenState extends State<SignInScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: ((context) => const HomeScreen()),
+            builder: ((context) => const NavBarRoots()),
           ));
     } catch (e) {
       // 로그인 실패. 에러 메시지를 표시합니다.
