@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:welcome/screens/onboding_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  // 감정 list 수집 필요 -> 해당 감정 기반으로 back-end content recommend system
   List symptoms = [
     "Temperature",
     "Snuffle",
